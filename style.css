@@ -1,0 +1,276 @@
+/* Importação de fontes Google com pesos variados para sofisticação */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Paleta de Cores Moderna */
+    --cor-primaria: #028302; /* Roxo suave e sofisticado */
+    --cor-secundaria: #50f310; /* Lilás claro */
+    --cor-fundo: #F8F9FA; /* Fundo muito claro */
+    --cor-card: #FFFFFF;
+    --cor-sucesso: #3ba8f6; /* Verde (Positivo) */
+    --cor-alerta: #D63031; /* Vermelho (Negativo) */
+    --cor-texto: #2D3436;
+    --sombra-suave: 0 6px 15px rgba(0, 0, 0, 0.08); /* Sombra mais elegante */
+    --borda-raio: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout Principal (GRID para Dinamismo) */
+.container {
+    max-width: 1200px; /* Aumentado para caber 3 colunas */
+    margin: 30px auto;
+    padding: 0 15px;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr; /* Padrão mobile */
+}
+
+/* Layout para telas maiores */
+@media (min-width: 768px) {
+    .container {
+        /* Layout de 3 colunas em telas grandes */
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "renda resultados cofrinho"
+            "despesas despesas analise" 
+            "lista lista lista"; 
+    }
+    #cadastro-renda { grid-area: renda; }
+    #registro-despesas { grid-area: despesas; }
+    #resultados { grid-area: resultados; }
+    #cofrinho-meta { grid-area: cofrinho; } 
+    #analise-e-tabela { grid-area: analise; }
+    #lista-detalhada { grid-area: lista; }
+}
+
+/* Estilo Básico do Card com Transição (Sofisticação) */
+.card {
+    background-color: var(--cor-card);
+    padding: 25px;
+    border-radius: var(--borda-raio);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--cor-secundaria);
+    font-weight: 600;
+}
+
+/* Inputs e Botões */
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: 400; }
+
+.card input {
+    width: 100%; padding: 12px; border: 1px solid #dfe6e9; border-radius: 6px;
+    font-size: 16px; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card input:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2); outline: none;
+}
+
+.card button {
+    background-color: var(--cor-primaria); color: white; border: none;
+    padding: 12px 15px; border-radius: 6px; cursor: pointer;
+    font-size: 16px; font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease; width: 100%;
+}
+.card button:hover {
+    background-color: #5d46e2; transform: translateY(-1px);
+}
+
+#registro-despesas[disabled] { opacity: 0.5; pointer-events: none; }
+
+
+/* --- BARRA DE PROGRESSO DE GASTOS --- */
+.gastos-progresso-container {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.barra-progresso {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    height: 30px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#barra-progresso-preenchimento {
+    height: 100%;
+    width: 0%; 
+    background-color: var(--cor-sucesso);
+    transition: width 0.6s ease-in-out, background-color 0.6s ease-in-out;
+}
+
+#progresso-percentual {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--cor-texto);
+    font-weight: 600;
+}
+
+/* Cores dinâmicas da barra de gastos */
+.barra-alerta #barra-progresso-preenchimento { background-color: #FFC107; }
+.barra-perigo #barra-progresso-preenchimento { background-color: var(--cor-alerta); }
+
+
+/* --- ESTILIZAÇÃO DO COFRINHO --- */
+.meta-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1.1em;
+}
+
+.meta-display.principal {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-top: 2px solid #eee;
+}
+
+.cofrinho-progresso-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Estilo específico para a barra do cofrinho (cor de poupança/sucesso) */
+.cofrinho-barra #barra-cofrinho-preenchimento {
+    background-color: var(--cor-secundaria); /* Lilás suave */
+    transition: width 0.6s ease-in-out;
+}
+
+/* Cor de sucesso para o cofrinho completo */
+.cofrinho-completo #barra-cofrinho-preenchimento {
+    background-color: var(--cor-sucesso) !important;
+}
+
+#cofrinho-valor-guardado.status-positive {
+    color: var(--cor-sucesso) !important;
+}
+
+/* Estilo do novo botão de ação do cofrinho */
+.btn-cofrinho-acao {
+    background-color: var(--cor-sucesso) !important; /* Cor de sucesso para depósito */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-cofrinho-acao:hover:not([disabled]) {
+    background-color: #008f75 !important;
+}
+
+.btn-cofrinho-acao:disabled {
+    background-color: #ced4da !important; /* Cinza claro quando desabilitado */
+    color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* --- TABELA DE CATEGORIAS --- */
+#analise-e-tabela h3 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+#tabela-categorias {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+#tabela-categorias th, #tabela-categorias td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+#tabela-categorias th {
+    background-color: var(--cor-primaria);
+    color: white;
+    font-weight: 600;
+    position: sticky; 
+    top: 0;
+}
+
+#tabela-categorias tbody tr:hover {
+    background-color: #f6f6f6;
+}
+
+/* Saldo e Status */
+.saldo-display {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px dashed #ddd; font-size: 1.1em;
+}
+.saldo-display.principal {
+    margin-top: 20px; padding: 15px; border-radius: 8px;
+    background-color: #f1f2f6; font-size: 1.4em; font-weight: bold; border-top: none;
+}
+.saldo-display span { font-size: 1.6em; font-weight: 700; transition: color 0.4s ease; }
+.status-negative span, .status-negative p { color: var(--cor-alerta) !important; }
+.status-positive span, .status-positive p { color: var(--cor-sucesso) !important; }
+.status-message { margin-top: 15px; padding: 5px; text-align: center; font-weight: 600; }
+
+/* Lista de Despesas e Transição */
+#despesas-list { list-style: none; }
+.despesa-item {
+    padding: 12px 0; border-bottom: 1px solid #eee; display: flex;
+    justify-content: space-between; opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.despesa-item:last-child { border-bottom: none; }
+.despesa-valor { font-weight: 600; color: var(--cor-texto); }
+.empty-state { text-align: center; color: #999; padding: 20px 0; }
+
+/* ANIMAÇÕES */
+.despesa-fade-in { opacity: 0; transform: translateX(-20px); }
+.despesa-fade-in.loaded { opacity: 1; transform: translateX(0); }
+
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 0 0 rgba(214, 48, 49, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(214, 48, 49, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(214, 48, 49, 0); }
+}
+.alerta-vermelho { border: 2px solid var(--cor-alerta); animation: pulseRed 1.5s infinite; }

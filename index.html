@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de Finanças Sofisticado</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>💸 Organizador de Finanças Pessoal</h1>
+    </header>
+
+    <main class="container">
+
+        <section id="cadastro-renda" class="card">
+            <h2>Dados Iniciais</h2>
+            <div class="input-group">
+                <label for="input-nome">Seu Nome:</label>
+                <input type="text" id="input-nome" placeholder="Seu nome" required>
+            </div>
+            <div class="input-group">
+                <label for="input-idade">Sua Idade:</label>
+                <input type="number" id="input-idade" placeholder="18 ou mais" required>
+            </div>
+            <div class="input-group">
+                <label for="input-renda">Renda Mensal (R$):</label>
+                <input type="number" id="input-renda" placeholder="Ex: 3500.00" required>
+            </div>
+            <button id="btn-salvar-renda">Iniciar / Atualizar Renda</button>
+            <p id="renda-status" class="status-message"></p>
+        </section>
+
+        <section id="resultados" class="card">
+            <h2>Resumo Financeiro</h2>
+            
+            <div class="gastos-progresso-container">
+                <p>Percentual Gasto da Renda:</p>
+                <div class="barra-progresso">
+                    <div id="barra-progresso-preenchimento"></div>
+                    <span id="progresso-percentual">0%</span>
+                </div>
+            </div>
+            
+            <div class="saldo-display">
+                <p>Total de Despesas:</p>
+                <span id="total-despesas">R$ 0.00</span>
+            </div>
+            <div class="saldo-display principal">
+                <p>SALDO FINAL:</p>
+                <span id="saldo-final">R$ 0.00</span>
+            </div>
+            <p id="status-alerta" class="status-message"></p>
+        </section>
+        
+        <section id="cofrinho-meta" class="card">
+            <h2>🐷 Meu Cofrinho de Poupança</h2>
+            
+            <div class="input-group">
+                <label for="input-meta-valor">Meta de Poupança (R$):</label>
+                <input type="number" id="input-meta-valor" placeholder="Ex: 500.00" required>
+            </div>
+            <button id="btn-definir-meta">Definir Meta</button>
+
+            <hr style="margin: 15px 0;">
+            <h3>Depositar no Cofrinho</h3>
+            <div class="input-group">
+                <label for="input-deposito-valor">Valor a Guardar (R$):</label>
+                <input type="number" id="input-deposito-valor" placeholder="Ex: 20.00">
+            </div>
+            <button id="btn-depositar-manual" class="btn-cofrinho-acao">
+                Adicionar ao Cofrinho
+            </button>
+            <hr style="margin: 15px 0;">
+            <div class="meta-display">
+                <p>Meta Total:</p>
+                <span id="meta-valor-total">R$ 0.00</span>
+            </div>
+
+            <div class="meta-display principal">
+                <p>Valor Guardado:</p>
+                <span id="cofrinho-valor-guardado" class="status-negative">R$ 0.00</span>
+            </div>
+            
+            <div class="cofrinho-progresso-container">
+                <p>Progresso da Meta:</p>
+                <div class="barra-progresso cofrinho-barra">
+                    <div id="barra-cofrinho-preenchimento"></div>
+                    <span id="cofrinho-percentual">0%</span>
+                </div>
+            </div>
+
+            <p id="cofrinho-status-alerta" class="status-message"></p>
+        </section>
+
+        <section id="registro-despesas" class="card" disabled>
+            <h2>Registrar Nova Despesa</h2>
+            <div class="input-group">
+                <label for="input-valor">Valor (R$):</label>
+                <input type="number" id="input-valor" placeholder="Ex: 50.50" required>
+            </div>
+            <div class="input-group">
+                <label for="input-categoria">Categoria:</label>
+                <input type="text" id="input-categoria" list="lista-categorias" placeholder="Ex: Alimentação, Transporte" required>
+                <datalist id="lista-categorias">
+                    </datalist>
+            </div>
+            <button id="btn-adicionar-despesa">Adicionar Despesa</button>
+        </section>
+
+        <section id="analise-e-tabela" class="card">
+            <h2>Análise de Categorias</h2>
+            
+            <div class="tabela-categorias-wrapper">
+                <h3>Resumo de Gastos por Categoria</h3>
+                <table id="tabela-categorias">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Total Gasto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="lista-detalhada" class="card">
+            <h2>Detalhe das Despesas</h2>
+            <ul id="despesas-list">
+                <li class="empty-state despesa-item">Nenhuma despesa registrada ainda.</li>
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+</html>
